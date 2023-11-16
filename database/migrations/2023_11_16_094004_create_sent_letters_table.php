@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('sent_letters', function (Blueprint $table) {
-            $table->id();
+            //$table->id();
+            $table->foreignId('adoszam')->references('adoszam')->on('students');
+            $table->date('kuld_datum');
+            $table->primary(['adoszam', 'kuld_datum']);
             $table->timestamps();
         });
     }
