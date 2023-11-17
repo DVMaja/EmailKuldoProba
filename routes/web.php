@@ -1,5 +1,7 @@
 <?php
 
+use App\Mail\TesztEmail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,4 +17,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/testroute', function () {
+    $name = "Teszt Email";
+
+    //the email sending is done using the to methode on the Mail facade
+    //tothl@dk.akkszalezi.hu
+    Mail::to(users:'athena.noctua.1769@gmail.com')->send(new TesztEmail($name));
 });
