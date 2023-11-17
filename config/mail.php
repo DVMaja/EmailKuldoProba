@@ -32,7 +32,8 @@ return [
     |            "postmark", "log", "array", "failover"
     |
     */
-    'microsoft-graph' => [
+    //Még nem
+  /*   'microsoft-graph' => [
         'transport' => 'microsoft-graph',
         'client_id' => env('MICROSOFT_GRAPH_CLIENT_ID'),
         'client_secret' => env('MICROSOFT_GRAPH_CLIENT_SECRET'),
@@ -41,8 +42,9 @@ return [
             'address' => env('MAIL_FROM_ADDRESS'),
             'name' => env('MAIL_FROM_NAME'),
         ],
-    ],
+    ], */
 
+    //SMTP küldéssel kell emaileket gmaileket kiküldeni
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
