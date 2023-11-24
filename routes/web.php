@@ -21,9 +21,10 @@ Route::get('/', function () {
 
 Route::get('/testroute', function () {
     $name = "Teszt Email";
-    $email = 'athena.noctua.1769@gmail.com';
+    $email = 'toth.laszlo@akkszalezi.hu';
 
     //the email sending is done using the to methode on the Mail facade
-    //tothl@dk.akkszalezi.hu
+    //toth.laszlo@akkszalezi.hu
+    //athena.noctua.1769@gmail.com
     Mail::to(users:$email)->send(new TesztEmail($name));
 });
