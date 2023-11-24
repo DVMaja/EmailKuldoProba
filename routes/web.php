@@ -20,11 +20,29 @@ Route::get('/', function () {
 });
 
 Route::get('/testroute', function () {
-    $name = "Teszt Email";
-    $email = 'toth.laszlo@akkszalezi.hu';
+    tobbszoriKuldes();
+    
+});
 
-    //the email sending is done using the to methode on the Mail facade
+function tobbszoriKuldes(){
+    $dbSzam = 1;
+
+    $email = 'toth.laszlo@akkszalezi.hu';
+    //$email = 'athena.noctua.1769@gmail.com';
+    for ($i=0; $i < 3; $i++) { 
+        $dbSzam++;
+        $name = $dbSzam;
+        $details = [
+            'title' => $name,
+            'name' => 'Címzett',
+            'body' => 'generált üzenet',
+    
+        ];
+        
+        Mail::to(users:$email)->send(new TesztEmail($details));
+       
+    }
+    dd("Email elküldve");
     //toth.laszlo@akkszalezi.hu
     //athena.noctua.1769@gmail.com
-    Mail::to(users:$email)->send(new TesztEmail($name));
-});
+}

@@ -17,33 +17,44 @@ class TesztEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(private string $name)
-    {
-        //
+    public function __construct(public $details)//private string $name,
+    {        
+        $this->details = $details;
     }
 
     /**
      * Get the message envelope.
      */
+    public function build()
+    {        
+        return $this->subject('Jövedelem kimutatás')//('subject' => $this->subject)
+           ->view('mail.test-email');
+        
+            
+    }
+
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Teszt Email',
+            //subject: [$this->$subject]
+            //with: ['subject' => $this->subject]
+            //with:['subject', $this->subject]
+
         );
     }
 
     /**
      * Get the message content definition.
      */
-    public function content(): Content
+    /* public function content(): Content
     {
         return new Content(
-            view: 'mail.test-email',//az első a mappa neve, a második blade neve lesz
+            view: 'mail.test-email', //az első a mappa neve, a második blade neve lesz
             with: ['name' => $this->name]
         );
     }
+ */
 
-    
 
     /**
      * Get the attachments for the message.
@@ -51,14 +62,14 @@ class TesztEmail extends Mailable
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
-    
+
     {
         $aktualisMappa = 'proba'; //ide kell valahogy majd megérkeznie a szükséges mappának
         $aktualisPdf = '/proba_pdf.pdf';
         return [
-            Attachment::fromPath('storage/'.$aktualisMappa.$aktualisPdf)
-                    ->as('kuldendo.pdf')
-                    ->withMime('application/pdf'),
+            Attachment::fromPath('storage/' . $aktualisMappa . $aktualisPdf)
+                ->as('kuldendo.pdf')
+                ->withMime('application/pdf'),
         ];
     }
 }
