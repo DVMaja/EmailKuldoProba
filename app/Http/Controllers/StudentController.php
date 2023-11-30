@@ -61,7 +61,7 @@ class StudentController extends Controller
         $students = DB::table('students as s')
             ->select('s.student_id', 's.email', 's.nev')
             ->get();
-            Storage::put('studentEmailData.jpg', $students);
+            Storage::put('studentEmailData.json', $students);
         return $students;
     }
 
