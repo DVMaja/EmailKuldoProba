@@ -29,6 +29,7 @@ function tobbszoriKuldes(){
 
     //$email = 'toth.laszlo@akkszalezi.hu';
     $email = 'athena.noctua.1769@gmail.com';
+
     for ($i=0; $i < 3; $i++) { 
         $dbSzam++;
         $name = $dbSzam;
