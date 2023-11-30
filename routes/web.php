@@ -24,9 +24,8 @@ Route::get('/testroute', function () {
     tobbszoriKuldes();
 });
 
-Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //ez jó 
-//Route::get('/api/student_datas_kiiratas', [StudentController::class, 'studentDatasKiiratas']); //valami
-//Route::get('/api/valami', [StudentController::class, 'valami']);
+Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //lekérdezi az emailküldéshez kellő adatokat
+Route::get('/api/student_datas_jsonba', [StudentController::class, 'studentDatasJsonba']); //json file létrehozása
 
 function tobbszoriKuldes()
 {

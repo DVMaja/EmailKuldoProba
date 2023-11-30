@@ -62,7 +62,6 @@ class TesztEmail extends Mailable
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array
-
     {
         $aktualisMappa = 'proba'; //ide kell valahogy majd megérkeznie a szükséges mappának
         $aktualisPdf = '/proba_pdf.pdf';

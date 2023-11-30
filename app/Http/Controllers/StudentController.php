@@ -2,13 +2,14 @@
 
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
-use mysqli;
+use Illuminate\Http\File;
+
 
 class StudentController extends Controller
 {
@@ -57,40 +58,20 @@ class StudentController extends Controller
     }
 
     public function studentDatas()
-    {                
+    {
+        return DB::table('students as s')
+            ->select('s.student_id', 's.email', 's.nev')
+            ->get();
+    }
+
+    public function studentDatasJsonba()
+    {
         $students = DB::table('students as s')
             ->select('s.student_id', 's.email', 's.nev')
             ->get();
-            Storage::put('studentEmailData.json', $students);
+
+        $jsonContent = json_encode($students);
+        Storage::put('/jsonTarolo/studentEmailData.json', $jsonContent);
         return $students;
-    }
-
-    public function studentDatasKiiratas()
-    {
-        //$database = DB::table('students');
-        //$results= $database->query('SELECT "student_id", "email", "nev"  FROM data;')->fetch_all();
-        //$results= $database->query('SELECT *  FROM data');
-        $result = DB::table('students as s')
-            ->select('s.student_id', 's.email', 's.nev')
-            ->get();
-        /*  $data  = array();
-        foreach ($result as $row) {
-            $student_id = $row[0];
-            $email = $row[1];
-            $nev = $row[2];            
-            $data[] = array($student_id, $email, $nev);
-        } */
-        //return $students;
-        //$json = json_encode(array("data" => $data));
-        // return response()->json($result);
-        //return $ $results;
-
-    }
-
-    public function valami()
-    {
-        return json_encode(DB::table('students as s')
-            ->select('s.student_id', 's.email', 's.nev')
-            ->get()->toArray());
     }
 }
