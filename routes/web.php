@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentController;
 use App\Mail\TesztEmail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
@@ -21,27 +22,29 @@ Route::get('/', function () {
 
 Route::get('/testroute', function () {
     tobbszoriKuldes();
-    
 });
 
-function tobbszoriKuldes(){
+Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //ez jó 
+Route::get('/api/student_datas_kiiratas', [StudentController::class, 'studentDatasKiiratas']);
+
+function tobbszoriKuldes()
+{
     $dbSzam = 1;
 
     //$email = 'toth.laszlo@akkszalezi.hu';
     $email = 'athena.noctua.1769@gmail.com';
 
-    for ($i=0; $i < 3; $i++) { 
+    for ($i = 0; $i < 3; $i++) {
         $dbSzam++;
         $name = $dbSzam;
         $details = [
             'title' => $name,
             'name' => 'Címzett',
             'body' => 'generált üzenet',
-    
+
         ];
-        
-        Mail::to(users:$email)->send(new TesztEmail($details));
-       
+
+        Mail::to(users: $email)->send(new TesztEmail($details));
     }
     dd("Email elküldve");
     //toth.laszlo@akkszalezi.hu
