@@ -25,7 +25,10 @@ Route::get('/testroute', function () {
 });
 
 Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //lekérdezi az emailküldéshez kellő adatokat
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIGYELEM FELÜLÍRJA az előzőt
 Route::get('/api/student_datas_jsonba', [StudentController::class, 'studentDatasJsonba']); //json file létrehozása
+//a lefuttatjuk FELÜLÍRJA az előző létezett json file-t
 
 function tobbszoriKuldes()
 {
