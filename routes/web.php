@@ -30,14 +30,14 @@ Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //
 Route::get('/api/student_datas_jsonba', [StudentController::class, 'studentDatasJsonba']); //json file létrehozása
 //a lefuttatjuk FELÜLÍRJA az előző létezett json file-t
 
-function tobbszoriKuldes()
+/* function tobbszoriKuldes($email)
 {
     $dbSzam = 1;
 
     //$email = 'toth.laszlo@akkszalezi.hu';
-    $email = 'athena.noctua.1769@gmail.com';
+    //$email = 'athena.noctua.1769@gmail.com';
 
-    for ($i = 0; $i < 3; $i++) {
+    for ($i = 0; $i < jsonfile.length; $i++) {
         $dbSzam++;
         $name = $dbSzam;
         $details = [
@@ -49,7 +49,37 @@ function tobbszoriKuldes()
 
         Mail::to(users: $email)->send(new TesztEmail($details));
     }
-    dd("Email elküldve");
-    //toth.laszlo@akkszalezi.hu
-    //athena.noctua.1769@gmail.com
+    //dd("Email elküldve");    
+} */
+
+
+function tobbszoriKuldes()
+{
+    // Assuming your JSON file is stored in the 'jsonTarolo' directory
+    $jsonFilePath = storage_path('app/jsonTarolo/studentEmailData.json');
+
+    // Check if the JSON file exists
+    if (file_exists($jsonFilePath)) {
+        $jsonContent = file_get_contents($jsonFilePath);
+        $students = json_decode($jsonContent);
+
+        foreach ($students as $student) {
+            $details = [
+                'name' => $student->nev,
+                'email' => $student->email,
+                'student_id' => $student->student_id,
+            ];
+        
+            Mail::to($student->email)->send(new TesztEmail($details));
+        }
+
+        dd("Emails elküldve");
+    } else {
+        dd("JSON file not found");
+    }
 }
+
+
+
+//toth.laszlo@akkszalezi.hu
+    //athena.noctua.1769@gmail.com

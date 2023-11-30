@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('student_id');
             $table->integer('adoszam');
             $table->integer('tajszam')->nullable()->default(null);
-            $table->string('email');//->unique() amíg tesztelés van
+            $table->string('email'); //->unique() amíg tesztelés van
             $table->string('nev');
             $table->string('szul_nev')->nullable()->default(null);
             $table->string('anyja_neve')->nullable()->default(null);
@@ -35,7 +35,7 @@ return new class extends Migration
 
         Student::create([
             'student_id' => '00524',
-            'adoszam'=> 1234567,
+            'adoszam' => 1234567,
             'email' => 'athena.noctua.1769@gmail.com',
             'nev' => 'Proba Felhasználó',
             'major_id' => 1
@@ -43,7 +43,7 @@ return new class extends Migration
 
         Student::create([
             'student_id' => '00525',
-            'adoszam'=> 1564567,
+            'adoszam' => 1564567,
             'email' => 'majadreilinger@gmail.com',
             'nev' => 'Proba 2',
             'major_id' => 2
@@ -51,7 +51,7 @@ return new class extends Migration
 
         Student::create([
             'student_id' => '00526',
-            'adoszam'=> 8344567,
+            'adoszam' => 8344567,
             'email' => 'majadreilinger@gmail.com',
             'nev' => 'Proba Masik',
             'major_id' => 2
@@ -59,7 +59,7 @@ return new class extends Migration
 
         Student::create([
             'student_id' => '00527',
-            'adoszam'=> 7345891,
+            'adoszam' => 7345891,
             'email' => 'athena.noctua.1769@gmail.com',
             'nev' => 'Proba Kuldés4',
             'major_id' => 1

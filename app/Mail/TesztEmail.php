@@ -17,8 +17,8 @@ class TesztEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct(public $details)//private string $name,
-    {        
+    public function __construct(public $details) //private string $name,
+    {
         $this->details = $details;
     }
 
@@ -26,21 +26,14 @@ class TesztEmail extends Mailable
      * Get the message envelope.
      */
     public function build()
-    {        
-        return $this->subject('Jövedelem kimutatás')//('subject' => $this->subject)
-           ->view('mail.test-email');
-        
-            
+    {
+        return $this->subject('Jövedelem kimutatás') //('subject' => $this->subject)
+            ->view('mail.test-email');
     }
 
     public function envelope(): Envelope
     {
-        return new Envelope(
-            //subject: [$this->$subject]
-            //with: ['subject' => $this->subject]
-            //with:['subject', $this->subject]
-
-        );
+        return new Envelope();
     }
 
     /**
@@ -48,13 +41,10 @@ class TesztEmail extends Mailable
      */
     /* public function content(): Content
     {
-        return new Content(
-            view: 'mail.test-email', //az első a mappa neve, a második blade neve lesz
-            with: ['name' => $this->name]
+        return new Content(            
         );
     }
  */
-
 
     /**
      * Get the attachments for the message.
@@ -65,10 +55,15 @@ class TesztEmail extends Mailable
     {
         $aktualisMappa = 'proba'; //ide kell valahogy majd megérkeznie a szükséges mappának
         $aktualisPdf = '/proba_pdf.pdf';
+        /* if ($aktualisPdf == $this->details.student_id) {
+            # code...
+        } */
         return [
             Attachment::fromPath('storage/' . $aktualisMappa . $aktualisPdf)
-                ->as('kuldendo.pdf')
+                //->as('kuldendo.pdf')
                 ->withMime('application/pdf'),
         ];
     }
+
+    
 }
