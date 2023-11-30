@@ -25,7 +25,8 @@ Route::get('/testroute', function () {
 });
 
 Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //ez jó 
-Route::get('/api/student_datas_kiiratas', [StudentController::class, 'studentDatasKiiratas']);
+//Route::get('/api/student_datas_kiiratas', [StudentController::class, 'studentDatasKiiratas']); //valami
+//Route::get('/api/valami', [StudentController::class, 'valami']);
 
 function tobbszoriKuldes()
 {

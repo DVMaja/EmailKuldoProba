@@ -2,10 +2,13 @@
 
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
+use mysqli;
 
 class StudentController extends Controller
 {
@@ -54,11 +57,11 @@ class StudentController extends Controller
     }
 
     public function studentDatas()
-    {
-        //$student = new Student();
+    {                
         $students = DB::table('students as s')
             ->select('s.student_id', 's.email', 's.nev')
             ->get();
+            Storage::put('studentEmailData.jpg', $students);
         return $students;
     }
 
@@ -67,9 +70,9 @@ class StudentController extends Controller
         //$database = DB::table('students');
         //$results= $database->query('SELECT "student_id", "email", "nev"  FROM data;')->fetch_all();
         //$results= $database->query('SELECT *  FROM data');
-        /* $result = DB::table('students as s')
+        $result = DB::table('students as s')
             ->select('s.student_id', 's.email', 's.nev')
-            ->get(); */
+            ->get();
         /*  $data  = array();
         foreach ($result as $row) {
             $student_id = $row[0];
@@ -82,5 +85,12 @@ class StudentController extends Controller
         // return response()->json($result);
         //return $ $results;
 
+    }
+
+    public function valami()
+    {
+        return json_encode(DB::table('students as s')
+            ->select('s.student_id', 's.email', 's.nev')
+            ->get()->toArray());
     }
 }
