@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('sent_letters', function (Blueprint $table) {
             //$table->id();
-            $table->foreignId('student_id')->references('student_id')->on('students');
-            $table->date('kuld_datum');
-            $table->primary(['student_id', 'kuld_datum']);
+            //$table->foreignId('student_id')->references('student_id')->on('students');
+            //$table->date('kuld_datum');
+           // $table->primary(['student_id', 'kuld_datum']);
             $table->timestamps();
         });
     }
