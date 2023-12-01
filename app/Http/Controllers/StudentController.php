@@ -67,8 +67,12 @@ class StudentController extends Controller
             ->select('s.student_id', 's.email', 's.nev')
             ->get();
 
+        $timestamp = now()->format('Y-m-d_H-i');
+        $jsonFileName = 'studentEmailData_' . $timestamp . '.json';
+
         $jsonContent = json_encode($students);
-        Storage::put('/jsonTarolo/studentEmailData.json', $jsonContent);
+        Storage::put('/jsonTarolo/' . $jsonFileName, $jsonContent);
+
         return $students;
     }
 }
