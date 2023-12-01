@@ -3,10 +3,8 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Attachment;
-use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
@@ -51,19 +49,26 @@ class TesztEmail extends Mailable
      *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
-    public function attachments(): array
+    /* public function attachments(): array
     {
         $aktualisMappa = 'proba'; //ide kell valahogy majd megérkeznie a szükséges mappának
         $aktualisPdf = '/proba_pdf.pdf';
-        /* if ($aktualisPdf == $this->details.student_id) {
-            # code...
-        } */
+        
         return [
             Attachment::fromPath('storage/' . $aktualisMappa . $aktualisPdf)
                 //->as('kuldendo.pdf')
                 ->withMime('application/pdf'),
         ];
-    }
+    } */
 
-    
+    public function attachments($folderName): array
+    {
+        $aktualisMappa = $folderName;
+        $aktualisPdf = '/proba_pdf.pdf';
+
+        return [
+            Attachment::fromPath('storage/' . $aktualisMappa . $aktualisPdf)
+                ->withMime('application/pdf'),
+        ];
+    }
 }

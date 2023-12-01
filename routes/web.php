@@ -30,29 +30,6 @@ Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //
 Route::get('/api/student_datas_jsonba', [StudentController::class, 'studentDatasJsonba']); //json file létrehozása
 //a lefuttatjuk FELÜLÍRJA az előző létezett json file-t
 
-/* function tobbszoriKuldes($email)
-{
-    $dbSzam = 1;
-
-    //$email = 'toth.laszlo@akkszalezi.hu';
-    //$email = 'athena.noctua.1769@gmail.com';
-
-    for ($i = 0; $i < jsonfile.length; $i++) {
-        $dbSzam++;
-        $name = $dbSzam;
-        $details = [
-            'title' => $name,
-            'name' => 'Címzett',
-            'body' => 'generált üzenet',
-
-        ];
-
-        Mail::to(users: $email)->send(new TesztEmail($details));
-    }
-    //dd("Email elküldve");    
-} */
-
-
 function tobbszoriKuldes()
 {
     // Assuming your JSON file is stored in the 'jsonTarolo' directory
@@ -68,8 +45,9 @@ function tobbszoriKuldes()
                 'name' => $student->nev,
                 'email' => $student->email,
                 'student_id' => $student->student_id,
+                
             ];
-        
+
             Mail::to($student->email)->send(new TesztEmail($details));
         }
 

@@ -13,27 +13,27 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pdf_paths', function (Blueprint $table) {
-            //$table->id();
-            $table->foreignId('student_id')->references('student_id')->on('majors');
+            $table->id();
+            // $table->foreignId('student_id')->references('student_id')->on('students');
             $table->string('path');
-            $table->primary(['year', 'month', 'path']);
+            //$table->primary(['year', 'month', 'path']);
             $table->year('year');
-            $table->unsignedTinyInteger('month');
+            $table->string('month', 2);
             $table->timestamps();
         });
 
         Pdf_path::create([
-            'student_id' => '00524',
+            //'student_id' => '00524',
             'path' => '202301',
             'year' => 2023,
-            'month' => 01,
+            'month' => '01',
         ]);
 
         Pdf_path::create([
-            'student_id' => '00525',
+            //'student_id' => '00524',
             'path' => '202301',
             'year' => 2023,
-            'month' => 01,
+            'month' => '01',
         ]);
     }
 

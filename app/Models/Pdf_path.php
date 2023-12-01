@@ -10,8 +10,7 @@ class Pdf_path extends Model
     use HasFactory;
     protected $fillable = [
         'student_id',
-        'path',
-        'major_id',
+        'path',       
         'year',
         'month',
     ];

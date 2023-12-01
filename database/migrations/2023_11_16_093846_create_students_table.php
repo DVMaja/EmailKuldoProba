@@ -3,7 +3,6 @@
 use App\Models\Student;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -15,8 +14,8 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             //$table->id("student_id");
-            $table->string('student_id');
-            $table->integer('adoszam');
+            $table->string('student_id')->unique();
+            $table->integer('adoszam')->unique();
             $table->integer('tajszam')->nullable()->default(null);
             $table->string('email'); //->unique() amíg tesztelés van
             $table->string('nev');
@@ -27,11 +26,6 @@ return new class extends Migration
             $table->primary(['student_id', 'adoszam']);
             $table->timestamps();
         });
-
-        /* DB::table('majors')->insert([
-            [],
-            ['student_id' => 00525, 'email' => 'majadreilinger@gmail.com', 'nev' => 'Proba 2', 'major_id' => 2],
-        ]); */
 
         Student::create([
             'student_id' => '00524',

@@ -3,12 +3,12 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+<!-- <head>
     <title></title>
-</head>
+</head> -->
 
 <body>
-    <h2>Hey, {{ $details['name'] }},</h2>
+    <h1>Hey, {{ $details['name'] }},</h1>
     <br>
     <p>Ez egy teszt email, SMPT segítsével. Mostmár formázva</p>
     <h3>Automatizált üzenethez</h3>
