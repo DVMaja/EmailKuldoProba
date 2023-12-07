@@ -44,7 +44,7 @@ class Pdf_pathController extends Controller
     public function pdfPathJsonba()
     {
         $pdf_path = DB::table('pdf_paths as p')
-            ->select('p.path', 'p.year', 'p.month')
+            ->select('p.path')//, 'p.year', 'p.month'
             ->get();
         $jsonFileName = 'pdf_pathData.json';
 

@@ -61,12 +61,28 @@ class TesztEmail extends Mailable
         ];
     } */
 
-    public function attachments($folderName, $pdfName): array
+    public function attachments(): array //$pdfName, $folderName
     {
-        $mappaPath = 'app/' . $folderName . '/';
+        /* $pdfPathPath = storage_path('app/pathTarolo/pdf_pathData.json');
+        if (file_exists($pdfPathPath)) {
+            $pdfPathJson = file_get_contents($pdfPathPath);
+            $pdfPath = json_decode($pdfPathJson);
+        } */
 
+        /* foreach ($pdfPath as $pdfPath) {
+            $pdfAdatok = [
+                'path' => $pdfPath->path,
+                'year' => $pdfPath->year,
+                'month' => $pdfPath->month,
+            ];
+        } */
+        print($this->details['path']);
+        $mappaPath = $this->details['path'];
+        //pdfek/202301
+        //$mappaPath = 'pdfek/202301';
+        $pdfName = '00524.pdf';
         return [
-            Attachment::fromPath($mappaPath . $pdfName)
+            Attachment::fromPath('storage/' . $mappaPath . '/' . $pdfName)
                 ->withMime('application/pdf'),
         ];
     }

@@ -24,14 +24,14 @@ return new class extends Migration
 
         Pdf_path::create([
             //'student_id' => '00524',
-            'path' => '202301',
+            'path' => 'pdfek/202301',
             'year' => 2023,
             'month' => '01',
         ]);
 
         Pdf_path::create([
             //'student_id' => '00524',
-            'path' => '202302',
+            'path' => 'pdfek/202302',
             'year' => 2023,
             'month' => '02',
         ]);

@@ -35,24 +35,41 @@ Route::get('/api/pdf_path_jsonba', [Pdf_pathController::class, 'pdfPathJsonba'])
 function tobbszoriKuldes()
 {
     // Assuming your JSON file is stored in the 'jsonTarolo' directory
-    $jsonFilePath = storage_path('app/jsonTarolo/studentEmailData.json');
+    $jsonFilePath = storage_path('app/jsonTarolo/studentEmailData_2023-12-01_08-03.json');
+    $pdfPathPath = storage_path('app/pathTarolo/pdf_pathData.json');
 
     // Check if the JSON file exists
     if (file_exists($jsonFilePath)) {
         $jsonContent = file_get_contents($jsonFilePath);
         $students = json_decode($jsonContent);
 
+        /* if (file_exists($pdfPathPath)) {
+            $pdfPathJson = file_get_contents($pdfPathPath);
+            $pdfPath = json_decode($pdfPathJson);
+ */
+
+        /* foreach ($pdfPath as $pdfPath) {
+            $pdfAdatok = [
+                'path' => $pdfPath->path,
+                //'year' => $pdfPath->year,
+                //'month' => $pdfPath->month,
+            ];
+
+            //print($pdfAdatok['path']);
+        } */
 
         foreach ($students as $student) {
             $details = [
                 'name' => $student->nev,
                 'email' => $student->email,
                 'student_id' => $student->student_id,
-                
-            ];
+                'path' => 'pdfek/202301'   //$pdfPath['path'],
 
-            Mail::to($student->email)->send(new TesztEmail($details));
+            ];
+            print($details['name']);
+            Mail::to($student->email)->send(new TesztEmail($details)); //, $pdfAdatok
         }
+        //}
 
         dd("Emails elküldve");
     } else {
