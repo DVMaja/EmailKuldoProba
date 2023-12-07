@@ -61,13 +61,12 @@ class TesztEmail extends Mailable
         ];
     } */
 
-    public function attachments($folderName): array
+    public function attachments($folderName, $pdfName): array
     {
-        $aktualisMappa = $folderName;
-        $aktualisPdf = '/proba_pdf.pdf';
+        $mappaPath = 'app/' . $folderName . '/';
 
         return [
-            Attachment::fromPath('storage/' . $aktualisMappa . $aktualisPdf)
+            Attachment::fromPath($mappaPath . $pdfName)
                 ->withMime('application/pdf'),
         ];
     }
