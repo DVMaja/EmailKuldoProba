@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Pdf_pathController;
 use App\Http\Controllers\StudentController;
 use App\Mail\TesztEmail;
 use Illuminate\Support\Facades\Mail;
@@ -29,6 +30,7 @@ Route::get('/api/student_datas', [StudentController::class, 'studentDatas']); //
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! FIGYELEM FELÜLÍRJA az előzőt
 Route::get('/api/student_datas_jsonba', [StudentController::class, 'studentDatasJsonba']); //json file létrehozása
 //a lefuttatjuk FELÜLÍRJA az előző létezett json file-t
+Route::get('/api/pdf_path_jsonba', [Pdf_pathController::class, 'pdfPathJsonba']);
 
 function tobbszoriKuldes()
 {
@@ -39,6 +41,7 @@ function tobbszoriKuldes()
     if (file_exists($jsonFilePath)) {
         $jsonContent = file_get_contents($jsonFilePath);
         $students = json_decode($jsonContent);
+
 
         foreach ($students as $student) {
             $details = [
