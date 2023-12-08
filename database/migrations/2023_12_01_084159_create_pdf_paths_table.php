@@ -14,23 +14,37 @@ return new class extends Migration
     {
         Schema::create('pdf_paths', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('student_id')->references('student_id')->on('students');
+            $table->string('student_id');
             $table->string('path');
-            //$table->primary(['year', 'month', 'path']);
             $table->year('year');
             $table->string('month', 2);
             $table->timestamps();
+            $table->foreign('student_id')->references('student_id')->on('students');
         });
 
         Pdf_path::create([
-            //'student_id' => '00524',
+            'student_id' => '00524',
             'path' => 'pdfek/202301',
             'year' => 2023,
             'month' => '01',
         ]);
 
         Pdf_path::create([
-            //'student_id' => '00524',
+            'student_id' => '00525',
+            'path' => 'pdfek/202302',
+            'year' => 2023,
+            'month' => '02',
+        ]);
+
+        Pdf_path::create([
+            'student_id' => '00526',
+            'path' => 'pdfek/202302',
+            'year' => 2023,
+            'month' => '02',
+        ]);
+
+        Pdf_path::create([
+            'student_id' => '00527',
             'path' => 'pdfek/202302',
             'year' => 2023,
             'month' => '02',
