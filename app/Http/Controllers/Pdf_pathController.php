@@ -29,6 +29,7 @@ class Pdf_pathController extends Controller
         $pdf_path = Pdf_path::find($id);
         $pdf_path->path = $request->path;
         $pdf_path->year = $request->year;
+        $pdf_path->student_id = $request->student_id;
         $pdf_path->month = $request->month;
         $pdf_path->save();
     }
@@ -39,6 +40,7 @@ class Pdf_pathController extends Controller
         $pdf_path->path = $request->path;
         $pdf_path->year = $request->year;
         $pdf_path->month = $request->month;
+        $pdf_path->student_id = $request->student_id;
         $pdf_path->save();
     }
     public function pdfPathJsonba()

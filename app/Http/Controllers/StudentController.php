@@ -64,7 +64,8 @@ class StudentController extends Controller
     public function studentDatasJsonba()
     {
         $students = DB::table('students as s')
-            ->select('s.student_id', 's.email', 's.nev')
+            ->join('pdf_paths as p', 's.student_id', '=', 'p.student_id')
+            ->select('s.student_id', 's.email', 's.nev', 'p.path')
             ->get();
 
         $timestamp = now()->format('Y-m-d_H-i');
