@@ -10,11 +10,16 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up(): void //paraméterként kell átadnia file nevét(a kódot->student_id)?//kell a file tényleges neve
+
     {
         Schema::create('pdf_paths', function (Blueprint $table) {
+            //laravel diamikus feltöltése laravelben Kérdezd Tanárnőt
             $table->id();
-            $table->string('student_id');
+            $table->string('student_id'); //dinamikus kitöltés
+            //csak a file neve
+            //dinamikusan kitölteni?
+            //$table->string('pdf_name');
             $table->string('path');
             $table->year('year');
             $table->string('month', 2);
@@ -23,7 +28,7 @@ return new class extends Migration
         });
 
         Pdf_path::create([
-            'student_id' => '00524',
+            'student_id' => '00524', //ide meghívni a függvényt?
             'path' => '202301',
             'year' => 2023,
             'month' => '01',

@@ -33,13 +33,17 @@ Route::get('/api/student_datas_jsonba', [StudentController::class, 'studentDatas
 //a lefuttatjuk FELÜLÍRJA az előző létezett json file-t
 //Route::get('/api/pdf_path_jsonba', [Pdf_pathController::class, 'pdfPathJsonba']);
 
-Route::get('/api/pdf_path', [PdfPathController::class,'index']);
+Route::get('/api/pdf_path', [PdfPathController::class, 'index']);
+function konkretPdf()
+{
+    
+}
 
 function tobbszoriKuldes()
-{    
-    $jsonFilePath = storage_path('app/jsonTarolo/studentEmailData_2023-12-08_08-46.json');   
+{
+    $jsonFilePath = storage_path('app/jsonTarolo/studentEmailData_2023-12-08_08-46.json');
 
-    
+
     if (file_exists($jsonFilePath)) {
         $jsonContent = file_get_contents($jsonFilePath);
         $students = json_decode($jsonContent);
@@ -49,7 +53,7 @@ function tobbszoriKuldes()
                 'name' => $student->nev,
                 'email' => $student->email,
                 'student_id' => $student->student_id,
-                'path' => $student->path, 
+                'path' => $student->path,
 
             ];
             //print($details['path']);

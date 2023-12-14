@@ -53,7 +53,7 @@ class StudentController extends Controller
         $student->major_id = $request->major_id;
         $student->save();
     }
-
+  
     public function studentDatas()
     {
         return DB::table('students as s')
